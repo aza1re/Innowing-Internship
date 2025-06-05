@@ -13,7 +13,7 @@ def main():
     pipeline.start(config)
     print("Press 's' to save a photo, 'q' to quit.")
 
-    save_dir = r"C:\Users\User\OneDrive\Desktop\Innowing\Workshops\MovingArm\arm_control-dobot_magician\ODworkshop\datasets\datasets_Robot\test\images"
+    save_dir = r"C:\Users\User\OneDrive\Desktop\Innowing\Workshops\MovingArm\ODworkshop\datasets\datasets_Robot\test\images"
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
     photo_count = 0
