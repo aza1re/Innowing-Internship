@@ -1,0 +1,13 @@
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 3
+names: ['Big Bolt', 'Metal Nut', 'Small Bolt']
+
+roboflow:
+  workspace: robotchallengedataset
+  project: dataset_robot-urmkv
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/robotchallengedataset/dataset_robot-urmkv/dataset/2
