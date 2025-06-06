@@ -14,11 +14,11 @@ class MyDobot(dobot.Dobot):
         self._set_ptp_cmd(x, y, z + height, r, mode=dobot.MODE_PTP.MOVL_XYZ, wait=True)
         self._set_ptp_cmd(x, y, z, r, mode=dobot.MODE_PTP.MOVL_XYZ, wait=wait)
 
-    def suck(self, enable, wait_time=0):
+    def suck(self, enable, wait_time=1):
         self._set_end_effector_suction_cup(enable)
         time.sleep(wait_time)    
         
-    def grip(self, enable, wait_time=0):
+    def grip(self, enable, wait_time=1):
         self._set_end_effector_gripper(enable)
         time.sleep(wait_time)
 

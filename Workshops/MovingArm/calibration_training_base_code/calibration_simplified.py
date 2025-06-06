@@ -92,12 +92,12 @@ def main():
     fx, fy, cx, cy = get_camera_intrinsics(profile)
     detector, tag_size = initialize_detector(0.0792)  # Set the tag size in meters 0.0792
     port = get_dobot_port()
-    device = MyDobot(port=port)
+    device = MyDobot(port="COM7")
     pose = device.get_pose()
     print("Pose returned by device.get_pose():", pose)
     print("Homing the robotic arm for calibration...")
     print("Attach the AprilTag 15.3cm above the gripper and make the x-axes aligned before calibration.")
-    #device.home()
+    device.home()
 
     cHt_list = []
     bHg_list = []

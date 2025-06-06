@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import pickle
 from pupil_apriltags import Detector
 
+print("Importing modules...")
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "control"))
 from mydobot import MyDobot
 
@@ -165,6 +166,7 @@ def main():
             if tag.pose_t is not None:
                 tag_coordinate = tag.pose_t.copy()  # Make a copy to ensure it's not modified by reference
                 draw_tag_info(color_image, tag)
+                print(f"Tag ID: {tag.tag_id}, Coordinate: {tag_coordinate.flatten()}")
                 # Update display to show tag was found
                 cv2.putText(color_image, "Tag Found!", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (0, 255, 0), 2)
         else:
@@ -192,6 +194,7 @@ def main():
             device.move_to(200, 0, 50, 0, wait=True)  # Move to a safe height before moving to tag position
             if tag_coordinate is not None:
                 camera_point = tag.pose_t.flatten()  # Already in meters
+                print(f"Camera Point: {camera_point}")
                 base_point = R_camera2base @ camera_point + t_camera2base.flatten()
                 base_point_mm = base_point * 1000.0  # back to mm
                 x, y, z = [float(v) for v in base_point_mm]
