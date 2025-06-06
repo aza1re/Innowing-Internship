@@ -15,7 +15,7 @@ def get_dobot_port():
 
 def main():
     port = get_dobot_port()
-    device = MyDobot(port=port)
+    device = MyDobot(port="COM7")
 
     print("Homing the robotic arm for calibration...")
     device.home()
