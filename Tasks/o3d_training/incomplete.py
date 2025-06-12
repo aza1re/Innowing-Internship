@@ -23,8 +23,8 @@ import pandas as pd
 from scipy.spatial.transform import Rotation as R
 
 # --- Load file paths and set up dataset size ---
-depth_path = Path("data/depth")  # Directory containing depth PNG files
-rgb_path = Path("data/rgb")      # Directory containing RGB JPG files
+depth_path = Path("Tasks/o3d_training/data/depth")  # Directory containing depth PNG files
+rgb_path = Path("Tasks/o3d_training/data/rgb")      # Directory containing RGB JPG files
 count = 132                      # Number of frames/images to process
 
 # --- Function to load and normalize an RGB image ---
@@ -49,7 +49,7 @@ def load_depth(i):
 depths = [load_depth(i) for i in range(count)]
 
 # --- Load camera intrinsic matrix (3x3) from CSV file ---
-matrix_path = Path("data/camera_matrix.csv")
+matrix_path = Path("Tasks/o3d_training/data/camera_matrix.csv")
 # Load intrinsics as a numpy array
 matrix = np.loadtxt(matrix_path, delimiter=",")
 
@@ -73,7 +73,7 @@ intrinsic = o3d.camera.PinholeCameraIntrinsic(width, height, fx, fy, cx, cy)
 ########################################################################
 
 # --- Load camera extrinsics (odometry/poses) from CSV file ---
-odometries_path = Path("data/odometry.csv")
+odometries_path = Path("Tasks/o3d_training/data/odometry.csv")
 
 ########################################################################
 # Each row should be a flattened 4x4 matrix (16 values per row)
@@ -138,7 +138,7 @@ for pcd in pcds:
 ########################################################################
 
 # --- Save the combined point cloud to a PLY file ---
-output_path = Path("data/combined_point_cloud.ply")
+output_path = Path("Tasks/o3d_training/data/combined_point_cloud.ply")
 
 ########################################################################
 o3d.io.write_point_cloud(str(output_path), combined_pcd)
